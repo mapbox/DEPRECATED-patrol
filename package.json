@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "crowsnest-rules-aws": "0.0.1",
-    "lambda-cfn": "0.0.2"
+    "lambda-cfn": "0.0.4"
   },
   "devDependencies": {
     "jscs": "2.11.0",
