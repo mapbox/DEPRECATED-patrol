@@ -1,0 +1,38 @@
+{
+  "name": "crowsnest",
+  "version": "0.0.0",
+  "description": "Run scheduled rules on AWS Lambda",
+  "main": "index.js",
+  "engines": {
+    "node": "0.10.38"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mapbox/crowsnest.git"
+  },
+  "scripts": {
+    "pretest": "jshint index.js && jscs index.js",
+    "test": "NODE_ENV=test tape test/*.test.js test/**/*.test.js"
+  },
+  "dependencies": {
+    "crowsnest-rules-aws": "0.0.1",
+    "lambda-cfn": "0.0.1"
+  },
+  "jscsConfig": {
+    "preset": "airbnb",
+    "requireCamelCaseOrUpperCaseIdentifiers": null
+  },
+  "jshintConfig": {
+    "node": true,
+    "globalstrict": false,
+    "undef": true,
+    "unused": true,
+    "noarg": true
+  },
+  "author": "Mapbox, Inc.",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/mapbox/crowsnest/issues"
+  },
+  "homepage": "https://github.com/mapbox/crowsnest"
+}
