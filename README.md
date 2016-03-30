@@ -1,6 +1,6 @@
 ## Crowsnest
 
-A lightweight, general purpose, serverless monitoring framework for security, compliance, and best practice issues across an organization. It simplifies wiring artibrary event streams to logic and notifications.
+A lightweight, general purpose, serverless monitoring framework for security, compliance, and best practice issues across an organization. It simplifies wiring arbitrary event streams to logic and notifications.
 
 Crowsnest is a Node application deployed on AWS, leveraging the following AWS services:
 - [CloudFormation](http://aws.amazon.com/documentation/cloudformation/)
