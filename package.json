@@ -1,5 +1,5 @@
 {
-  "name": "crowsnest",
+  "name": "patrol",
   "version": "0.0.0",
   "description": "Run scheduled rules on AWS Lambda",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mapbox/crowsnest.git"
+    "url": "https://github.com/mapbox/patrol.git"
   },
   "scripts": {
     "pretest": "jshint index.js && jscs index.js",
     "test": "NODE_ENV=test tape test/*.test.js test/**/*.test.js"
   },
   "dependencies": {
-    "crowsnest-rules-aws": "0.0.1",
+    "patrol-rules-aws": "0.0.1",
     "lambda-cfn": "0.0.5"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
   "author": "Mapbox, Inc.",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/mapbox/crowsnest/issues"
+    "url": "https://github.com/mapbox/patrol/issues"
   },
-  "homepage": "https://github.com/mapbox/crowsnest"
+  "homepage": "https://github.com/mapbox/patrol"
 }

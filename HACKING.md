@@ -1,14 +1,14 @@
-#### Hacking the Crowsnest stack
+#### Hacking the Patrol stack
 
-Because `crowsnest` includes both the rulesets and `lambda-cfn` in its `package.json`, developing new functionality could require several roundtrips through Github. 
+Because `patrol` includes both the rulesets and `lambda-cfn` in its `package.json`, developing new functionality could require several roundtrips through Github. 
 
 Instead, leverage `npm link` to link in the development dependency. For example, if working on `lambda-cfn`, the workflow would look something like:
-- Once finished with modifications to `lambda-cfn` link it to `crowsnest`
+- Once finished with modifications to `lambda-cfn` link it to `patrol`
 
 	```bash
 	cd lambda-cfn  #modified version
 	npm link
-	cd ../crowsnest
+	cd ../patrol
 	npm link lambda-cfn #links in the modified version
 	npm install #installs the remaining dependencies but skips lambda-cfn
 	```
