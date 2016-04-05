@@ -1,5 +1,5 @@
-## Developing a ruleset for Crowsnest
-Rulesets are kept as separate repositories from the underlying Crowsnest infrastructure code. If developing a public rule set it is recommended to prefix the repository name with `crowsnest-rules-` to aid in discoverability.
+## Developing a ruleset for Patrol
+Rulesets are kept as separate repositories from the underlying Patrol infrastructure code. If developing a public rule set it is recommended to prefix the repository name with `patrol-rules-` to aid in discoverability.
 
 #### Guidelines
 1. Rule namespace is _currently_ global across all ruleset. See https://github.com/mapbox/lambda-cfn/issues/6
@@ -7,7 +7,7 @@ Rulesets are kept as separate repositories from the underlying Crowsnest infrast
 2. A rule repository typically has the following structure:
 
 	```
-	crowsnest-rules-XXX
+	patrol-rules-XXX
 			-> package.json
 			-> rules
 					-> RULE-A.js
@@ -22,9 +22,9 @@ Rulesets are kept as separate repositories from the underlying Crowsnest infrast
 
 	```javascript
 	{
-	  "name": "crowsnest-rules-aws",
+	  "name": "patrol-rules-aws",
 	  "version": "0.0.1",
-	  "description": "XXX rules for Crowsnest",
+	  "description": "XXX rules for Patrol",
 	  "main": "index.js",
 	  "engines": {
 		"node": "0.10.38"
