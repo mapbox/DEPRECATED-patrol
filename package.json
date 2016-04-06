@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "patrol-rules-aws": "0.0.1",
-    "lambda-cfn": "0.0.5"
+    "lambda-cfn": "0.0.7"
   },
   "devDependencies": {
     "jscs": "2.11.0",
