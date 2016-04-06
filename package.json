@@ -15,7 +15,7 @@
     "test": "NODE_ENV=test tape test/*.test.js test/**/*.test.js"
   },
   "dependencies": {
-    "patrol-rules-aws": "0.0.1",
+    "patrol-rules-aws": "0.0.4",
     "lambda-cfn": "0.0.7"
   },
   "devDependencies": {
