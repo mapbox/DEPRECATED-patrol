@@ -11,6 +11,7 @@ Instead, leverage `npm link` to link in the development dependency. For example,
 	cd ../patrol
 	npm link lambda-cfn #links in the modified version
 	npm install #installs the remaining dependencies but skips lambda-cfn
+  export LAMBDA_TASK_ROOT=$PWD #insures /patrol is used as the app root
 	```
 
 - To remove the development version (nodejs v0.10.x)
