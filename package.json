@@ -1,43 +1,43 @@
 {
-  "name": "patrol",
-  "version": "0.0.1",
-  "description": "Run scheduled rules on AWS Lambda",
-  "main": "index.js",
+  "license": "BSD-2-Clause", 
   "engines": {
     "node": "0.10.38"
-  },
+  }, 
+  "name": "patrol", 
   "repository": {
-    "type": "git",
-    "url": "https://github.com/mapbox/patrol.git"
-  },
-  "scripts": {
-    "pretest": "jshint index.js && jscs index.js",
-    "test": "NODE_ENV=test tape test/*.test.js test/**/*.test.js"
-  },
-  "dependencies": {
-    "patrol-rules-aws": "0.0.4",
-    "lambda-cfn": "0.0.7"
-  },
-  "devDependencies": {
-    "jscs": "2.11.0",
-    "jshint": "2.9.1",
-    "tape": "4.5.1"
-  },
-  "jscsConfig": {
-    "preset": "airbnb",
-    "requireCamelCaseOrUpperCaseIdentifiers": null
-  },
-  "jshintConfig": {
-    "node": true,
-    "globalstrict": false,
-    "undef": true,
-    "unused": true,
-    "noarg": true
-  },
-  "author": "Mapbox, Inc.",
-  "license": "BSD",
+    "url": "https://github.com/mapbox/patrol.git", 
+    "type": "git"
+  }, 
+  "author": "Mapbox, Inc.", 
+  "homepage": "https://github.com/mapbox/patrol", 
   "bugs": {
     "url": "https://github.com/mapbox/patrol/issues"
-  },
-  "homepage": "https://github.com/mapbox/patrol"
+  }, 
+  "jscsConfig": {
+    "preset": "airbnb", 
+    "requireCamelCaseOrUpperCaseIdentifiers": null
+  }, 
+  "version": "0.0.1", 
+  "dependencies": {
+    "patrol-rules-aws": "0.0.4", 
+    "lambda-cfn": "0.0.7"
+  }, 
+  "scripts": {
+    "test": "NODE_ENV=test tape test/*.test.js test/**/*.test.js", 
+    "pretest": "jshint index.js && jscs index.js"
+  }, 
+  "devDependencies": {
+    "tape": "4.5.1", 
+    "jscs": "2.11.0", 
+    "jshint": "2.9.1"
+  }, 
+  "main": "index.js", 
+  "jshintConfig": {
+    "node": true, 
+    "unused": true, 
+    "globalstrict": false, 
+    "undef": true, 
+    "noarg": true
+  }, 
+  "description": "Run scheduled rules on AWS Lambda"
 }
