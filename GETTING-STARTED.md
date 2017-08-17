@@ -1,84 +1,58 @@
-#### Getting started with Patrol
-This guide assumes AWS credentials are exported as local environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+# Getting Started
 
-1. Clone repositories
+A quick start guide to writing Patrol rules.
 
-	```bash
-	git clone git@github.com:mapbox/patrol
-	git clone git@github.com:mapbox/cfn-config
-	git clone git@github.com:mapbox/streambot
-	```
+## Prerequisites
 
-2. Install `cfn-config`
+* Node and npm installed
+* An AWS account
+* awscli configured
+* config and template S3 buckets, see [S3 bucket section of the lambda-cfn README](https://github.com/mapbox/lambda-cfn#s3-buckets)
 
-	```bash
-	cd cfn-config
-	npm install && npm link
-	```
+## What's your rule?
 
-3. Create an S3 bucket for `cfn-config` to store template configurations (for example: `cfn-configs`)
-4. Create `~/.cfnrc`
+What condition do you want to monitor or problem do you want to solve? What service do you want to monitor? AWS? GitHub? Slack? You'll need to pick an existing Patrol project or propose a new one.
 
-	```javascript
-	{
-		"bucket": "cfn-configs"
-	}
-	```
+* Does your rule involve monitoring AWS? Check out [/patrol-rules-aws](https://github.com/mapbox/patrol-rules-aws)
+* Does your rule monitor GitHub? Check out [/patrol-rules-github](https://github.com/mapbox/patrol-rules-github)
+* None of the above services? [Create a new issue in this repo](https://github.com/mapbox/patrol/issues/new) and we'll discuss your idea.
 
-1. [Create a `streambot` stack](https://github.com/mapbox/streambot/blob/master/readme.md)
-6. Include desired rulesets in Crownest `patrol/package.json`
+## Setup
 
-	```javascript
-	"dependencies": {
-		"patrol-rules-aws": "0.0.1",
-		"ADDITIONAL-RULESET": "VERSION",
-		"lambda-cfn": "0.0.5"
-	  },
-	```
+First globally install [lambda-cfn](https://github.com/mapbox/lambda-cfn). We'll be using lambda-cfn to create new Patrol rule functions and deploy them to AWS.
 
-1. Install Patrol dependencies
+`npm install -g @mapbox/lambda-cfn`
 
-	```bash
-	cd patrol
-	npm install
-	```
+Then clone and set up the Patrol repo that you'll be working on. In this guide we'll be using [patrol-rules-aws](https://github.com/mapbox/patrol-rules-aws) in our examples.
 
-6. Modify `cloudformation/patrol-template.js` to select rules to deploy
+```
+git clone git@github.com:mapbox/patrol-rules-aws.git
+cd patrol-rules-aws
+npm install
+```
 
-	```javascript
-	var lambdaCfn = require('lambda-cfn');
-	module.exports = lambdaCfn(
-	  [
-		'node_modules/patrol-rules-aws/rules/assumeRole.js',
-		'node_modules/patrol-rules-aws/rules/blacklistedResources.js',
-		'node_modules/patrol-rules-aws/rules/cloudfrontModifyDelete.js',
-		'node_modules/patrol-rules-aws/rules/cloudTrail.js',
-		'node_modules/patrol-rules-aws/rules/whitelistedIAMActions.js'
-		'node_modules/ADDITIONAL-RULESET/rules/ADDITION-RULE.js'
-	  ],
-	  {
-		"AWSTemplateFormatVersion": "2010-09-09",
-		"Description": "patrol"
-	  }
-	);
-	```
+## Writing your new rule
 
-1. Run tests
+Each Patrol rule function lives in its own sub-directory. To create our new function, run `lambda-cfn init <function directory name>`.
 
-	```bash
-	npm test
-	```
+This will create a new subdirectory with a `function.js` and `function.template.js` file. See the [lambda-cfn](https://github.com/mapbox/lambda-cfn) README for more information on how to use these files.
 
-3. Zip up Patrol for deployment to AWS Lambda: http://docs.aws.amazon.com/lambda/latest/dg/nodejs-create-deployment-pkg.html.
-4. Copy the zip up to S3. By default, the Patrol template asks for the parameters for an S3 bucket, a prefix, and a gitsha. The default location of the zip for the Patrol lambda is then: `BUCKET/PREFIX/GITSHA.zip`
-2. Create the stack with `cfn-config`. This step will create everything but the CloudWatch Event Rules.
+## Writing tests
 
-	```bash
-	cfn-create -t cloudformation/patrol-template.js -n YOUR-STACK-NAME -r us-east-1
-	```
+Don't forget to write tests for your rule! Tests live in the `tests` directory of each Patrol project, with one test file per Patrol rule function.
 
-3. Create the CloudWatch Event Rules
+## Upload your code to S3
 
-	```bash
-	lambda-cfn-rules YOUR-STACK-NAME
-	```
+Before you can deploy the CloudFormation stack for your rule function you'll need to zip up and upload the code to S3. If you don't have your own build system you can use the `upload.sh` script in lambda-cfn to do this, [see the section on uploading your code in the lambda-cfn README](https://github.com/mapbox/lambda-cfn#uploading-your-code-to-s3).
+
+## Deploying your rule to AWS
+
+To deploy your rule function to AWS, run the following command from the rule subdirectory:
+
+`lambda-cfn create <environment name>`
+
+See the [lambda-cfn documentation](https://github.com/mapbox/lambda-cfn#creating-the-cloudformation-stack) for more information on `lambda-cfn create` and other deployment commands.
+
+## Submitting a PR
+
+If you'd like to have your rule featured in a Patrol project, please submit a PR. In order for PRs to be merged and approved they must have passing tests and must deploy to AWS successfully. 
