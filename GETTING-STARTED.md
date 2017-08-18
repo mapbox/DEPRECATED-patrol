@@ -39,7 +39,7 @@ This will create a new subdirectory with a `function.js` and `function.template.
 
 ## Writing tests
 
-Don't forget to write tests for your rule! Tests live in the `tests` directory of each Patrol project, with one test file per Patrol rule function.
+Don't forget to write tests for your rule! Tests live in the `test` directory of each Patrol project, with one test file per Patrol rule function.
 
 ## Upload your code to S3
 
